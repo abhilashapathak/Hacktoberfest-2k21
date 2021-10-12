@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    string str,str1;
+    cout<<"enter total no of words\n";
+    cin>>n;
+      map <string,int> m1;
+   
+ cout<<"enter all the words \n";
+    
+    for(int i=0;i<n;i++)
+    {
+      cin>>str;
+      m1[str]++;
+    }
+    cout<<"\n sorted string in lexicographical order along  with its       frequency : \n";
+
+    cout<<"\n-------------------------------------------------------------------\n";
+    map <string,int>::iterator it;
+    for(it=m1.begin();it!=m1.end();it++)
+    {
+        cout<<(*it).first <<"\t"<<(*it).second<<"\n";
+    }
+  
+    cout<<"\n------------------------------------------------------------------\n";
+    cout<<"enter any word to find weather it is present or not\n";
+    cin>>str1;
+    auto xz=m1.find(str1);
+    if (m1.count(str1)>0)
+    {
+      cout << "element found\n";
+      cout<<(*xz).first<< "\t"<<(*xz).second;
+    }
+    else 
+      cout << " element not found\n";
+    
+ } 
