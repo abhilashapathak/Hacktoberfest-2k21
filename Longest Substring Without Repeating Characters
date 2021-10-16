@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char,int>mp;
+        int i=0,j=0;
+        int maxval=0;
+        while(j<s.size()){
+            if(mp[s[j]]==1)
+            {
+                mp[s[i]]--;
+                i++;
+                //cout<<i<<" "<<j<<endl;
+            }
+            else{
+                mp[s[j]]++;
+                j++;
+                maxval=max(maxval,(j-i));
+                //cout<<maxval<<" "<<j-i<<endl;
+            }
+        }
+      return maxval;
+    }
+};
