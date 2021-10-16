@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to print common strings with minimum index sum
+void find(vector<string> list1, vector<string> list2)
+{
+	vector<string> res; // resultant list
+	int max_possible_sum = list1.size() + list2.size() - 2;
+
+	// iterating over sum in ascending order
+	for (int sum = 0; sum <= max_possible_sum ; sum++)
+	{
+		// iterating over one list and check index
+		// (Corresponding to given sum) in other list
+		for (int i = 0; i <= sum; i++)
+		
+			// put common strings in resultant list
+			if (i < list1.size() &&
+				(sum - i) < list2.size() &&
+				list1[i] == list2[sum - i])
+				res.push_back(list1[i]);		
+
+		// if common string found then break as we are
+		// considering index sums in increasing order.
+		if (res.size() > 0)
+			break;
+	}
+
+	// print the resultant list
+	for (int i = 0; i < res.size(); i++)
+		cout << res[i] << " ";
+}
+
+// Driver code
+int main()
+{
+	// Creating list1
+	vector<string> list1;
+	list1.push_back("GeeksforGeeks");
+	list1.push_back("Udemy");
+	list1.push_back("Coursera");
+	list1.push_back("edX");
+
+	// Creating list2
+	vector<string> list2;
+	list2.push_back("Codecademy");
+	list2.push_back("Khan Academy");
+	list2.push_back("GeeksforGeeks");
+
+	find(list1, list2);
+	return 0;
+}
